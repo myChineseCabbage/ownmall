@@ -38,4 +38,15 @@
   <delete id="deleteRoleOfThisSys" parameterType="com.zxb.ownmallmapper.pojo.UmsRole">
     delete  from ums_role where role_id = #{roleId,jdbcType=VARCHAR} and  sys_id = #{sysId,jdbcType=VARCHAR}
   </delete>
+  <update id="updateByRoleId" parameterType="com.zxb.ownmallmapper.pojo.UmsRole">
+    update  ums_role
+    <trim prefix="set" suffixOverrides=",">
+      <if test="roleName!=null">role_name = #{roleName,jdbcType=VARCHAR},</if>
+      <if test="description!=null">description = #{description ,jdbcType=VARCHAR},</if>
+      <if test="available!=null">available=#{available,jdbcType=VARCHAR},</if>
+      <if test="adminCount!=null">admin_count=#{adminCount,jdbcType=VARCHAR},</if>
+      <if test="sort!=null">sort=#{sort,jdbcType=VARCHAR},</if>
+    </trim>
+    where  role_id = #{roleId,jdbcType=VARCHAR} and  sys_id = #{sysId,jdbcType=VARCHAR}
+  </update>
 </mapper>

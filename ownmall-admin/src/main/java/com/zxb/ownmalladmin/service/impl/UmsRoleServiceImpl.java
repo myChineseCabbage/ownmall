@@ -2,6 +2,7 @@ package com.zxb.ownmalladmin.service.impl;
 
 import com.zxb.ownmalladmin.service.UmsRoleService;
 import com.zxb.ownmallcommon.utils.DataGenerationUtil;
+import com.zxb.ownmallcommon.utils.DateTimeUtils;
 import com.zxb.ownmallmapper.mapper.UmsRoleExtendsMapper;
 import com.zxb.ownmallmapper.mapper.UmsRoleGroupRoleExtendsMapper;
 import com.zxb.ownmallmapper.pojo.UmsRole;
@@ -66,5 +67,22 @@ public class UmsRoleServiceImpl implements UmsRoleService {
         //删除角色与角色组关系表中的数据
        i += umsRoleGroupRoleExtendsMapper.deleteByRoleId(umsRole.getRoleId());
        return i;
+    }
+
+
+    /**
+     * 更新校色相关信息
+     * @param umsRole
+     * @param umsRoleGroupRole
+     * @return
+     */
+    @Transactional
+    @Override
+    public int updateRole(UmsRole umsRole, UmsRoleGroupRole umsRoleGroupRole) {
+        int i = 0;
+        i = umsRoleExtendsMapper.updateByRoleId(umsRole);
+        umsRoleGroupRole.setUpdateTime(DateTimeUtils.dateTimeFormat());
+        i+= umsRoleGroupRoleExtendsMapper.updateRoleGroupRoleByRoleId(umsRoleGroupRole);
+        return i;
     }
 }

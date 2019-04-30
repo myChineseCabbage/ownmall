@@ -10,4 +10,11 @@ public interface UmsRoleExtendsMapper extends  UmsRoleMapper {
      * @return
      */
     int deleteRoleOfThisSys(UmsRole umsRole);
+
+    /**
+     * 更新角色信息
+     * @param umsRole
+     * @return
+     */
+    int updateByRoleId(UmsRole umsRole);
 }

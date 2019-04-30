@@ -19,4 +19,12 @@ public interface UmsRoleService {
      * @return
      */
     int deleteRolesOfThisSys(UmsRole umsRole);
+
+    /**
+     * 更新角色相关信息
+     * @param umsRole
+     * @param umsRoleGroupRole
+     * @return
+     */
+    int updateRole(UmsRole umsRole,UmsRoleGroupRole umsRoleGroupRole);
 }
