@@ -2,7 +2,7 @@ package com.zxb.ownmalladmin.service.impl;
 
 import com.zxb.ownmalladmin.service.SysInfoService;
 import com.zxb.ownmallcommon.utils.DataGenerationUtil;
-import com.zxb.ownmallmapper.mapper.SysinfoExtendsMapper;
+import com.zxb.ownmallmapper.mapper.SysinfoMapper;
 import com.zxb.ownmallmapper.pojo.Sysinfo;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import java.util.List;
 public class SysInfoServiceImpl implements SysInfoService {
 
     @Resource
-    private SysinfoExtendsMapper sysinfoExtendsMapper;
+    private SysinfoMapper sysinfoMapper;
 
     /**
      * 添加子系统到当前系统下
@@ -35,7 +35,7 @@ public class SysInfoServiceImpl implements SysInfoService {
         //系统编码生成
         //1.查出库中所有的系统编码
         //2.生成一个系统编码，判断是否包含其中，若不包含，插入到数据库
-        List<String> sysNoList = sysinfoExtendsMapper.selectAllSysNo();
+        List<String> sysNoList = sysinfoMapper.selectAllSysNo();
         String sysNo ="Sys"+DataGenerationUtil.random4str(4);
         System.out.println(sysNoList);
         if(sysNoList.contains(sysNo)){
@@ -55,7 +55,7 @@ public class SysInfoServiceImpl implements SysInfoService {
         sysinfo.setSysNo(sysNo);
         sysinfo.setSysCreateTime(createTime);
         sysinfo.setSysUpdataTime(createTime);
-        int i = sysinfoExtendsMapper.insertSysInfo(sysinfo);
+        int i = sysinfoMapper.insertSysInfo(sysinfo);
         return i;
     }
 
@@ -66,7 +66,7 @@ public class SysInfoServiceImpl implements SysInfoService {
      */
     @Override
     public Sysinfo selectSysInfoBySysNo(String sysNo) {
-        Sysinfo sysinfo = sysinfoExtendsMapper.selectSysInfoBySysNo(sysNo);
+        Sysinfo sysinfo = sysinfoMapper.selectSysInfoBySysNo(sysNo);
         return sysinfo;
     }
 
@@ -82,7 +82,7 @@ public class SysInfoServiceImpl implements SysInfoService {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String updataTime = simpleDateFormat.format(ts);
         sysinfo.setSysUpdataTime(updataTime);
-        int i = sysinfoExtendsMapper.updateByPrimaryKey(sysinfo);
+        int i = sysinfoMapper.updateByPrimaryKey(sysinfo);
         return i;
     }
 }

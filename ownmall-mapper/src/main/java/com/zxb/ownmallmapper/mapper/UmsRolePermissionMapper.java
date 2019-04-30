@@ -28,4 +28,20 @@ public interface UmsRolePermissionMapper {
      * @mbggenerated
      */
     List<UmsRolePermission> selectAll();
+
+    /**
+     * 查询所有该角色的数据
+     * @param UmsRolePermission
+     * @return
+     */
+    long selCountsByRoleId(UmsRolePermission UmsRolePermission);
+
+    /**
+     * 根据roleId删除数据
+     * @param umsRolePermission
+     * @return
+     */
+    int deleteByRoleId(UmsRolePermission umsRolePermission);
+
+
 }

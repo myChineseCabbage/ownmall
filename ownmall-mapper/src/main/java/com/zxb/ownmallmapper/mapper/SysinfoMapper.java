@@ -43,4 +43,7 @@ public interface SysinfoMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Sysinfo record);
+    int insertSysInfo(Sysinfo sysinfo);
+    Sysinfo selectSysInfoBySysNo(String sysNo);
+    List<String> selectAllSysNo();
 }

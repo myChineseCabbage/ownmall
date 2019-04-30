@@ -2,7 +2,7 @@ package com.zxb.ownmalladmin.service.impl;
 
 import com.zxb.ownmalladmin.service.UmsRoleGroupService;
 import com.zxb.ownmallcommon.utils.DataGenerationUtil;
-import com.zxb.ownmallmapper.mapper.UmsRoleGroupExtendsMapper;
+import com.zxb.ownmallmapper.mapper.UmsRoleGroupMapper;
 import com.zxb.ownmallmapper.pojo.UmsRoleGroup;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,7 +20,7 @@ import java.util.List;
 public class UmsRoleGroupServiceImpl implements UmsRoleGroupService {
 
     @Resource
-    private UmsRoleGroupExtendsMapper umsRoleGroupExtendsMapper;
+    private UmsRoleGroupMapper umsRoleGroupMapper;
 
     /**
      * 新增角色组
@@ -36,7 +36,7 @@ public class UmsRoleGroupServiceImpl implements UmsRoleGroupService {
         umsRoleGroup.setGroupId(groupId);
         umsRoleGroup.setCreateTime(createTime);
         umsRoleGroup.setUpdateTime(createTime);
-        int i = umsRoleGroupExtendsMapper.insert(umsRoleGroup);
+        int i = umsRoleGroupMapper.insert(umsRoleGroup);
         return i;
     }
 
@@ -47,7 +47,7 @@ public class UmsRoleGroupServiceImpl implements UmsRoleGroupService {
      */
     @Override
     public List<UmsRoleGroup> selectRoleGroups(@RequestBody  UmsRoleGroup umsRoleGroup) {
-        List<UmsRoleGroup> list = umsRoleGroupExtendsMapper.selectAllBySysId(umsRoleGroup.getSysId());
+        List<UmsRoleGroup> list = umsRoleGroupMapper.selectAllBySysId(umsRoleGroup.getSysId());
         return list;
     }
 }

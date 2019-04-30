@@ -43,4 +43,14 @@ public interface UmsRoleGroupMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(UmsRoleGroup record);
+
+    /**查询当前系统下的角色组
+     * 根据系统id
+     * @param sysId
+     * @return
+     */
+    List<UmsRoleGroup> selectAllBySysId(String sysId);
+
+
+
 }

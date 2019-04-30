@@ -1,6 +1,8 @@
 package com.zxb.ownmallmapper.mapper;
 
 import com.zxb.ownmallmapper.pojo.UmsRoleGroupRole;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
 
 public interface UmsRoleGroupRoleMapper {
@@ -43,4 +45,8 @@ public interface UmsRoleGroupRoleMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(UmsRoleGroupRole record);
+
+    int deleteByRoleId(@Param("roleId") String roleId);
+
+    int updateRoleGroupRoleByRoleId(UmsRoleGroupRole umsRoleGroupRole);
 }
