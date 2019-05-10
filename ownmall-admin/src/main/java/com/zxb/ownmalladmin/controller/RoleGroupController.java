@@ -55,6 +55,7 @@ public class RoleGroupController {
             resultObj.put("RetCode",ResponseCode.SUCCESS_CODE);
             resultObj.put("RetMsg",ResponseCode.SUCCESS_DEFAULT_MSG);
         }catch (Exception e){
+            e.printStackTrace();
             resultObj.put("RetCode",ResponseCode.EXCEPTION_DEFAULT_CODE);
             resultObj.put("RetMsg",ResponseCode.EXCEPTION_DEFAULT_MSG);
         }

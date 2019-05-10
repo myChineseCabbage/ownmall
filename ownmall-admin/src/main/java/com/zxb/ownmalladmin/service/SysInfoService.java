@@ -2,6 +2,8 @@ package com.zxb.ownmalladmin.service;
 
 import com.zxb.ownmallmapper.pojo.Sysinfo;
 
+import java.util.List;
+
 public interface  SysInfoService {
 
     //添加子系统到当前系统下
@@ -20,4 +22,6 @@ public interface  SysInfoService {
      * @return
      */
     int updataSysinfoByPrimaryKey(Sysinfo sysinfo);
+
+    List<Sysinfo> selectSonSystem(String sysNo);
 }

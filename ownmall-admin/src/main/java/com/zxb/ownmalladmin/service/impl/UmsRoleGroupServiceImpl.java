@@ -46,8 +46,10 @@ public class UmsRoleGroupServiceImpl implements UmsRoleGroupService {
      * @return
      */
     @Override
-    public List<UmsRoleGroup> selectRoleGroups(@RequestBody  UmsRoleGroup umsRoleGroup) {
+    public List<UmsRoleGroup> selectRoleGroups(UmsRoleGroup umsRoleGroup) {
+        System.out.println("根据系统id查询角色组" +umsRoleGroup);
         List<UmsRoleGroup> list = umsRoleGroupMapper.selectAllBySysId(umsRoleGroup.getSysId());
+
         return list;
     }
 }

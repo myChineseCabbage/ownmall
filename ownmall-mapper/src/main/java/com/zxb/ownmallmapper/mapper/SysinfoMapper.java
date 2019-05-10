@@ -46,4 +46,5 @@ public interface SysinfoMapper {
     int insertSysInfo(Sysinfo sysinfo);
     Sysinfo selectSysInfoBySysNo(String sysNo);
     List<String> selectAllSysNo();
+    List<Sysinfo> selectSonSystem(String sysNo);
 }

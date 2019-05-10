@@ -14,6 +14,31 @@
     <result column="sort" jdbcType="VARCHAR" property="sort" />
     <result column="sys_id" jdbcType="VARCHAR" property="sysId" />
   </resultMap>
+
+  <resultMap id="BaseResultMap2" type="com.zxb.ownmallmapper.pojo.UmsRole" autoMapping="true">
+    <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="available" jdbcType="VARCHAR" property="available" />
+    <result column="admin_count" jdbcType="VARCHAR" property="adminCount" />
+    <result column="sort" jdbcType="VARCHAR" property="sort" />
+    <result column="sys_id" jdbcType="VARCHAR" property="sysId" />
+    <association property="umsRoleGroupRole" javaType="com.zxb.ownmallmapper.pojo.UmsRoleGroupRole">
+      <result column="rgr_id" jdbcType="VARCHAR" property="rgrId" />
+      <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+      <result column="role_id" jdbcType="VARCHAR" property="roleId" />
+      <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+      <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+      <association property="umsRoleGroup" javaType="com.zxb.ownmallmapper.pojo.UmsRoleGroup">
+        <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+        <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+        <result column="decription" jdbcType="VARCHAR" property="decription" />
+        <result column="create_time" jdbcType="VARCHAR" property="createTime" />
+        <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+        <result column="sys_id" jdbcType="VARCHAR" property="sysId" />
+      </association>
+    </association>
+  </resultMap>
   <insert id="insert" parameterType="com.zxb.ownmallmapper.pojo.UmsRole">
     <!--
       WARNING - @mbggenerated
@@ -49,4 +74,29 @@
     </trim>
     where  role_id = #{roleId,jdbcType=VARCHAR} and  sys_id = #{sysId,jdbcType=VARCHAR}
   </update>
+
+  <select id="selectAllRolesOfThisSys" parameterType="java.lang.String" resultMap="BaseResultMap2">
+   select r.role_id role_id,
+   r.role_name role_name,
+    r.description description,
+    r.available available,
+    r.admin_count admin_count,
+     r.sort sort, r.sys_id sys_id,
+      rgr.rgr_id rgr_id,
+      rgr.group_id group_id,
+       rgr.role_id role_id,
+        rgr.create_time create_time,
+        rgr.update_time update_time,
+         rg.group_id group_id,
+         rg.group_name group_name,
+          rg.decription decription,
+           rg.create_time create_time,
+            rg.update_time update_time,
+            rg.sys_id sys_id
+            from (ums_role r LEFT JOIN ums_role_group_role rgr ON r.role_id=rgr.role_id)
+            LEFT JOIN ums_role_group rg ON rgr.group_id = rg.group_id
+    where 1= 1 and r.sys_id = #{sysId,jdbcType=VARCHAR}
+
+  </select>
+
 </mapper>

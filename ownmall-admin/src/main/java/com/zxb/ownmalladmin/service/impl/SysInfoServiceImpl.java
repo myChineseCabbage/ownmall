@@ -85,4 +85,15 @@ public class SysInfoServiceImpl implements SysInfoService {
         int i = sysinfoMapper.updateByPrimaryKey(sysinfo);
         return i;
     }
+
+    /**
+     * 查询当前系统下的所有系统列表
+     * @param sysNo
+     * @return
+     */
+    @Override
+    public List<Sysinfo> selectSonSystem(String sysNo) {
+        List<Sysinfo> list = sysinfoMapper.selectSonSystem(sysNo);
+        return list;
+    }
 }

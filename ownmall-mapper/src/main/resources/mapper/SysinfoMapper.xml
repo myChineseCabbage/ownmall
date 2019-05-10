@@ -153,4 +153,12 @@
     #{sysCreatePeopleType,jdbcType=VARCHAR}, #{sysCreateTime,jdbcType=VARCHAR}, #{sysUpdataTime,jdbcType=VARCHAR},
     #{parentId,jdbcType=VARCHAR})
   </insert>
+  <select id="selectSonSystem" parameterType="java.lang.String" resultType="com.zxb.ownmallmapper.pojo.Sysinfo">
+    select
+    <include refid="Base_column_list" />
+    from
+    sysinfo
+    where parent_id = #{sysNo,jdbcType=VARCHAR}
+  </select>
+
 </mapper>

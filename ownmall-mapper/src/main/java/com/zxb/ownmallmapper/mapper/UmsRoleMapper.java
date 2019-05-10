@@ -1,7 +1,10 @@
 package com.zxb.ownmallmapper.mapper;
 
 import com.zxb.ownmallmapper.pojo.UmsRole;
+import org.apache.ibatis.annotations.Param;
+
 import java.util.List;
+import java.util.Map;
 
 public interface UmsRoleMapper {
     /**
@@ -33,4 +36,11 @@ public interface UmsRoleMapper {
      * @return
      */
     int updateByRoleId(UmsRole umsRole);
+
+    /**
+     * 查询角色关联角色组的列表
+     * @param sysId
+     * @return
+     */
+    List<Map<String,String>> selectAllRolesOfThisSys(String sysId);
 }

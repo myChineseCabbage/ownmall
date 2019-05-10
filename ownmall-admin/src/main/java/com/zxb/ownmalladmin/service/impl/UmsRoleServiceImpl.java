@@ -14,6 +14,8 @@ import javax.annotation.Resource;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class UmsRoleServiceImpl implements UmsRoleService {
@@ -84,5 +86,16 @@ public class UmsRoleServiceImpl implements UmsRoleService {
         umsRoleGroupRole.setUpdateTime(DateTimeUtils.dateTimeFormat());
         i+= umsRoleGroupRoleMapper.updateRoleGroupRoleByRoleId(umsRoleGroupRole);
         return i;
+    }
+
+    /**
+     * 查询角色关联角色组的列表
+     * @param sysId
+     * @return
+     */
+    @Override
+    public List<Map<String, String>> selectAllRolesOfThisSys(String sysId) {
+        List<Map<String,String>> roleGroups = umsRoleMapper.selectAllRolesOfThisSys(sysId);
+        return roleGroups;
     }
 }

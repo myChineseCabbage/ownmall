@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/admin/role")
 public class RoleController {
@@ -90,6 +92,22 @@ public class RoleController {
             e.printStackTrace();
             resultObj.put("RetCode", "DDDDDDDD");
             resultObj.put("RetMsg", "参数不完整");
+        }catch (Exception e){
+            e.printStackTrace();
+            resultObj.put("RetCode", ResponseCode.EXCEPTION_DEFAULT_CODE);
+            resultObj.put("RetMsg", ResponseCode.EXCEPTION_DEFAULT_MSG);
+        }
+        return  resultObj;
+    }
+
+    @ApiOperation(value = "查询角色关联角色组列表",notes = "")
+    @RequestMapping(value = "/selectAllRolesOfThisSys",method = RequestMethod.POST)
+    public JSONObject selectAllRolesOfThisSys(@RequestBody JSONObject jsonObject){
+        JSONObject resultObj = new JSONObject();
+        try{
+            resultObj.put("roleGroups",umsRoleServiceImpl.selectAllRolesOfThisSys(jsonObject.getString("sysId")));
+            resultObj.put("RetCode", ResponseCode.SUCCESS_CODE);
+            resultObj.put("RetMsg", ResponseCode.SUCCESS_DEFAULT_MSG);
         }catch (Exception e){
             e.printStackTrace();
             resultObj.put("RetCode", ResponseCode.EXCEPTION_DEFAULT_CODE);
