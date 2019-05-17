@@ -1,6 +1,10 @@
 package com.zxb.ownmallmapper.mapper;
 
+import com.zxb.ownmallmapper.pojo.Sysinfo;
 import com.zxb.ownmallmapper.pojo.UmsAdmin;
+import com.zxb.ownmallmapper.pojo.UmsPermission;
+import com.zxb.ownmallmapper.pojo.UmsRole;
+
 import java.util.List;
 
 public interface UmsAdminMapper {
@@ -43,4 +47,26 @@ public interface UmsAdminMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(UmsAdmin record);
+
+    /**
+     * 根据条件查询单个用户
+     * @param umsAdmin
+     * @return
+     */
+    UmsAdmin selectUmsAdminOne(UmsAdmin umsAdmin);
+
+    /**
+     * 根据条件查询当前系统下的所有角色信息
+     * @param umsAdmin
+     * @return
+     */
+    List<UmsRole> selectRoleOfThisAdmin(UmsAdmin umsAdmin);
+
+    /***
+     * 根据条件查询当前系统下角色的所有权限
+     * @param umsAdmin
+     * @return
+     */
+    List<UmsPermission> selectPermissionOfThisAdmin(UmsAdmin umsAdmin);
+
 }
