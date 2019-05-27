@@ -2,10 +2,16 @@ package com.zxb.ownmalladmin.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.zxb.ownmalladmin.invar.ResponseCode;
+import com.zxb.ownmalladmin.service.UmsAdminService;
 import com.zxb.ownmalladmin.service.UmsRoleService;
 import com.zxb.ownmallmapper.pojo.UmsRole;
 import com.zxb.ownmallmapper.pojo.UmsRoleGroupRole;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.subject.Subject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/admin/role")
 public class RoleController {
-
+    private Logger logger = LoggerFactory.getLogger(UmsAdminService.class);
     @Autowired
     private UmsRoleService umsRoleServiceImpl;
 
@@ -103,6 +109,9 @@ public class RoleController {
     @ApiOperation(value = "查询角色关联角色组列表",notes = "")
     @RequestMapping(value = "/selectAllRolesOfThisSys",method = RequestMethod.POST)
     public JSONObject selectAllRolesOfThisSys(@RequestBody JSONObject jsonObject){
+        Subject subject  = SecurityUtils.getSubject();
+        Session session = subject.getSession();
+        logger.debug("session:"+session.toString());
         JSONObject resultObj = new JSONObject();
         try{
             resultObj.put("roleGroups",umsRoleServiceImpl.selectAllRolesOfThisSys(jsonObject.getString("sysId")));

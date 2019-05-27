@@ -6,8 +6,7 @@ import com.zxb.ownmalladmin.invar.ResponseCode;
 import com.zxb.ownmalladmin.service.SysInfoService;
 import com.zxb.ownmallmapper.pojo.Sysinfo;
 import io.swagger.annotations.ApiOperation;
-import lombok.extern.slf4j.Slf4j;
-import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class SystemController {
     @Autowired
     private SysInfoService sysInfoServiceIml;
 
-    @RequiresRoles("admin")
+    @RequiresPermissions({"/helloAdmin"})
     @ApiOperation(value="获取用户列表", notes="")
     @RequestMapping("/helloAdmin")
     public String hello(){

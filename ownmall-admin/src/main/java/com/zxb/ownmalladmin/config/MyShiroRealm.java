@@ -35,7 +35,7 @@ public class MyShiroRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        logger.debug("MyShiroRealm.doGetAuthorizationInfo()>>>>>>>>>");
+        logger.debug("MyShiroRealm.doGetAuthorizationInfo()>>>>>>>>>授权");
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         //得到当前登录的用户
         String currentLoginUser = (String)principalCollection.getPrimaryPrincipal();
