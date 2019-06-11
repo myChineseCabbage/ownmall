@@ -203,7 +203,7 @@ public class RSAEncryptUtils {
         InputStream inputStream = null;
         BufferedReader bufferedReader = null;
         try {
-            String publicKetPath = RSAConstant.PUBLICKEY_PATTH;
+            String publicKetPath = RSAConstant.RSA_PUBLICKEY_PATH;
             inputStream = RSAEncryptUtils.class.getClassLoader().getResourceAsStream(publicKetPath);
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String readLine = null;

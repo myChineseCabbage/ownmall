@@ -11,6 +11,8 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodReturnValueHandler;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import java.util.Map;
+
 /**
  * 实现具体的统一json返回处理
  */
@@ -34,11 +36,12 @@ public class ResponseBodyWrapHandler implements HandlerMethodReturnValueHandler 
         ApiResult apiResult = null;
         if(returnValue instanceof  ApiResult){
             apiResult = (ApiResult) returnValue;
+            logger.debug("返回参数处理");
             logger.debug(apiResult.toString());
             //加密操作
 
         }else{
-            apiResult = new ApiResult(ErrorCode.SUCCESS.getRc(),ErrorCode.SUCCESS.getMsg(),returnValue);
+            apiResult = new ApiResult(ErrorCode.SUCCESS.getRc(),ErrorCode.SUCCESS.getMsg(),jsonToMap(returnValue.toString()));
             logger.debug(apiResult.toString());
         }
         //是否加密
@@ -53,5 +56,16 @@ public class ResponseBodyWrapHandler implements HandlerMethodReturnValueHandler 
             delegate.handleReturnValue(apiResult,returnType,mavContainer,webRequest);
         }
 
+    }
+
+    /**
+     * json string 转换为 map 对象
+     * @param jsonObj
+     * @return
+     */
+    public static Map<Object, Object> jsonToMap(String jsonObj) {
+        JSONObject jsonObject = JSONObject.parseObject(jsonObj);
+        Map<Object, Object> map = (Map)jsonObject;
+        return map;
     }
 }

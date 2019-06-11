@@ -1,10 +1,12 @@
 package com.zxb.ownmalladmin.config;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zxb.ownmalladmin.controller.SystemController;
 import com.zxb.ownmalladmin.service.UmsAdminService;
 import com.zxb.ownmallmapper.pojo.UmsAdmin;
 import com.zxb.ownmallmapper.pojo.UmsPermission;
 import com.zxb.ownmallmapper.pojo.UmsRole;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -13,6 +15,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,7 +46,6 @@ public class MyShiroRealm extends AuthorizingRealm {
         UmsAdmin umsAdmin = new UmsAdmin();
         umsAdmin.setAdminName(currentLoginUser);
         umsAdmin = umsAdminServiceImpl.selectByUmsAdmin(umsAdmin);
-
         List<UmsRole> roles = umsAdminServiceImpl.selectAllRolesOfUmsAdmin(umsAdmin);
         Set<String> roleNames = new HashSet<>();
         for (int i =0;i<roles.size();i++){

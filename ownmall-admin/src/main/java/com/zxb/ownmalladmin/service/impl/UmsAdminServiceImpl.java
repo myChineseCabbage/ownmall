@@ -1,5 +1,6 @@
 package com.zxb.ownmalladmin.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zxb.ownmalladmin.controller.SystemController;
 import com.zxb.ownmalladmin.service.UmsAdminService;
 import com.zxb.ownmallcommon.utils.DataGenerationUtil;
@@ -73,5 +74,16 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         List<UmsPermission> umsPermissionList = umsAdminMapper.selectPermissionOfThisAdmin(umsAdmin);
         logger.debug(umsPermissionList.toString());
         return umsPermissionList;
+    }
+
+    /**
+     * 查询管理员信息，角色，资源
+     * @param umsAdmin
+     * @return
+     */
+    @Override
+    public JSONObject selAdminInfoAlls(UmsAdmin umsAdmin) {
+        UmsAdmin u = umsAdminMapper.selectUmsAdminOne(umsAdmin);
+        return null;
     }
 }

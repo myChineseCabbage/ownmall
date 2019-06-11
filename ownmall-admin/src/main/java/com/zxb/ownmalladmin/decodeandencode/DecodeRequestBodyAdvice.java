@@ -2,21 +2,17 @@ package com.zxb.ownmalladmin.decodeandencode;
 import com.alibaba.fastjson.JSONObject;
 import com.zxb.ownmalladmin.invar.OperContant;
 import com.zxb.ownmalladmin.medecryption.EnCryptDecryptUtils;
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonInputMessage;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.RequestBodyAdvice;
 
 import java.io.*;
 import java.lang.reflect.Type;
-import java.nio.charset.Charset;
 
 
 @Component
@@ -33,7 +29,6 @@ public class DecodeRequestBodyAdvice implements RequestBodyAdvice {
         }
 
     }
-
     @Override
     public HttpInputMessage beforeBodyRead(HttpInputMessage inputMessage, MethodParameter parameter, Type targetType, Class<? extends HttpMessageConverter<?>> converterType) throws IOException {
         HttpInputMessage inputMessage2 = inputMessage;

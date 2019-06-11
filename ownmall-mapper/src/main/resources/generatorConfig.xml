@@ -82,6 +82,29 @@
         <!--<property name="useActualColumnNames" value="false" />-->
         <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
         <!--</table>-->
+
+
+        <table tableName="tool_file_info"
+        enableCountByExample="true"
+        enableUpdateByExample="true"
+        enableDeleteByExample="true"
+        enableSelectByExample="true"
+        selectByExampleQueryId="true">
+        <property name="useActualColumnNames" value="false" />
+        <!-- 数据库表主键 -->
+        <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
+
+        <table tableName="tool_file_chunk"
+               enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false" />
+            <!-- 数据库表主键 -->
+            <generatedKey column="id" sqlStatement="Mysql" identity="true" />
+        </table>
         <!--<table tableName="sysinfo"-->
                <!--enableCountByExample="true"-->
                <!--enableUpdateByExample="true"-->
@@ -93,16 +116,16 @@
             <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
             <!--<generatedKey column="node_id" sqlStatement="Mysql" identity="true" />-->
         <!--</table>-->
-        <table tableName="ums_admin"
-               enableCountByExample="true"
-               enableUpdateByExample="true"
-               enableDeleteByExample="true"
-               enableSelectByExample="true"
-               selectByExampleQueryId="true">
-            <property name="useActualColumnNames" value="false" />
-            <!-- 数据库表主键 -->
-            <generatedKey column="admin_id" sqlStatement="Mysql" identity="true" />
-        </table>
+        <!--<table tableName="ums_admin"-->
+               <!--enableCountByExample="true"-->
+               <!--enableUpdateByExample="true"-->
+               <!--enableDeleteByExample="true"-->
+               <!--enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="false" />-->
+            <!--&lt;!&ndash; 数据库表主键 &ndash;&gt;-->
+            <!--<generatedKey column="admin_id" sqlStatement="Mysql" identity="true" />-->
+        <!--</table>-->
         <!--<table tableName="ums_menu"-->
                <!--enableCountByExample="true"-->
                <!--enableUpdateByExample="true"-->

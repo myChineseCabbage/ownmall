@@ -14,6 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.misc.BASE64Decoder;
+import sun.misc.BASE64Encoder;
 
 import java.util.Map;
 
@@ -111,6 +113,7 @@ public class RoleController {
     public JSONObject selectAllRolesOfThisSys(@RequestBody JSONObject jsonObject){
         Subject subject  = SecurityUtils.getSubject();
         Session session = subject.getSession();
+        logger.debug(session.getAttribute("a").toString());
         logger.debug("session:"+session.toString());
         JSONObject resultObj = new JSONObject();
         try{
@@ -123,6 +126,7 @@ public class RoleController {
             resultObj.put("RetMsg", ResponseCode.EXCEPTION_DEFAULT_MSG);
         }
         return  resultObj;
+
     }
 
 }

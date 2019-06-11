@@ -1,5 +1,6 @@
 package com.zxb.ownmalladmin.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.zxb.ownmallmapper.pojo.UmsAdmin;
 import com.zxb.ownmallmapper.pojo.UmsPermission;
 import com.zxb.ownmallmapper.pojo.UmsRole;
@@ -18,6 +19,11 @@ public interface UmsAdminService {
      */
     int addAdmin(UmsAdmin umsAdmin);
 
+    /**
+     * 查询管理员信息
+     * @param umsAdmin
+     * @return
+     */
     UmsAdmin selectByUmsAdmin(UmsAdmin umsAdmin);
 
     /**
@@ -34,4 +40,6 @@ public interface UmsAdminService {
      */
     List<UmsPermission> selectAllPermissionsOfUmsAdmin(UmsAdmin umsAdmin);
 
+
+    JSONObject selAdminInfoAlls(UmsAdmin umsAdmin);
 }

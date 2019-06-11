@@ -110,7 +110,7 @@ public class RsaAesUtils {
 
 	public static  void  main(String[] args) throws  Exception{
 		log4j.debug("加密");
-		String str= "1234567890101112";
+		String str= "123456789";
 		String result = generateRsaAesByPublicKey(str);
 		log4j.debug(result);
 	}
